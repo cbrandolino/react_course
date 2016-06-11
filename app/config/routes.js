@@ -7,9 +7,9 @@ var Main = require('../components/Main');
 var Home = require('../components/Home');
 
 var routes = (
-  <Router> 
+  <Router>
     <Route path="/" component={Main}>
-      <Route path="" component={Home} />
+      <Route path="/home" component={Home} />
     </Route>
   </Router>
 )
