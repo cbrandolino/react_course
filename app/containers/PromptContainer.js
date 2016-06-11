@@ -1,21 +1,27 @@
 var React = require('react');
+var Prompt = require('../components/prompt');
+
 
 var PromptContainer = React.createClass({
+  
+  contextTypes: {
+    router: React.PropTypes.object.isRequired
+  },
   getInitialState: function() {
       return {
           username: ""
       };
   },
-  onUpdateUser: function(e) {
+  handleUpdateUser: function(e) {
     this.setState({
       username: e.target.value
     })
   },
-  onSubmitUser: function(e) {
+  handleSubmitUser: function(e) {
     e.preventDefault();
     var username = this.state.username;
     this.setState({
-      username = "";
+      username: ""
     });
     if (this.props.routeParams.playerOne) {
       this.context.router.push({
@@ -30,20 +36,16 @@ var PromptContainer = React.createClass({
         pathname: '/playerTwo/' + this.state.username
       });  
     }
-  }
+  },
   render: function() {
     return (
-      <div className="PromptContainer">
-        <h1>{this.props.route.header}</h1>
-        <form  onSubmit={this.onSubmitUser}>
-          <input
-            placeholder="Github username"
-            onChange={this.onUpdateUser}
-            value={this.state.username}
-            type="text" />
-          <input type="submit" />
-        </form>
-      </div>
+      <Prompt 
+        onSubmitUser={this.handleSubmitUser}
+        onUpdateUser={this.handleUpdateUser}
+        header={this.props.routes.header}
+        username={this.state.username}
+        type="text"
+      />
     );
   }
 });
