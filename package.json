@@ -16,7 +16,8 @@
     "webpack-dev-server": "^1.14.1"
   },
   "scripts": {
-    "production": "webpack -p "
+    "production": "webpack -p",
+    "start": "webpack-dev-server"
   },
   "author": "Claudio Brandolino <cbrandolino@gmail.com>",
   "license": "ISC"
