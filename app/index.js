@@ -17,9 +17,12 @@ var ProfilePic = React.createClass({
 });
 
 var Link = React.createClass({
+  changeUrl: function() {
+    window.location.replace(this.props.href);
+  },
   render: function() {
     return (
-      <span>
+      <span onClick={this.changeUrl}>
         {this.props.children}
       </span>
     );
