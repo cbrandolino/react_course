@@ -11,11 +11,31 @@ var PromptContainer = React.createClass({
       username: e.target.value
     })
   },
+  onSubmitUser: function(e) {
+    e.preventDefault();
+    var username = this.state.username;
+    this.setState({
+      username = "";
+    });
+    if (this.props.routeParams.playerOne) {
+      this.context.router.push({
+        pathname: '/battle',
+        query: {
+          playerOne: this.props.routeParams.playerOne,
+          playerTwo: this.state.username
+        }
+      }); 
+    } else {
+      this.context.router.push({
+        pathname: '/playerTwo/' + this.state.username
+      });  
+    }
+  }
   render: function() {
     return (
       <div className="PromptContainer">
         <h1>{this.props.route.header}</h1>
-        <form>
+        <form  onSubmit={this.onSubmitUser}>
           <input
             placeholder="Github username"
             onChange={this.onUpdateUser}
