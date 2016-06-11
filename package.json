@@ -16,8 +16,9 @@
     "webpack-dev-server": "^1.14.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "production": "webpack -p",
+    "start": "webpack-dev-server"
   },
-  "author": "",
+  "author": "Claudio Brandolino <cbrandolino@gmail.com>",
   "license": "ISC"
 }
